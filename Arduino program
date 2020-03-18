@@ -1,0 +1,124 @@
+
+Arduino Traffic Light Simulator
+Arduino Traffic Light Simulator © GPL3+
+Simulate a traffic light using an Arduino and LEDs! This project is super cool to watch and easy to make!
+
+arduinoblinky lightsledtraffic light
+23,763 VIEWS11 COMMENTS49 RESPECTS
+COMPONENTS AND SUPPLIES
+A000066 iso both	
+Arduino UNO & Genuino UNO
+Any kind of 'Uno" will do. I have a Geekcreit Uno that works fine.
+×	1	
+12002 04	
+Breadboard (generic)
+×	1	
+11026 02	
+Jumper wires (generic)
+Male/Male required
+×	1	
+09590 01	
+LED (generic)
+You will need red, green, and blue lights
+×	3	
+Arduino USB 2.0 data Cable
+×	1	
+Mfr 25frf52 100r sml	
+Resistor 100 ohm
+Brown, Black, Brown
+×	1	
+APPS AND ONLINE SERVICES
+Ide web	
+Arduino IDE
+ABOUT THIS PROJECT
+This simple little project uses an Arduino and some LEDs to replicate a traffic light. It uses code as an internal timer and continues to run until you cut the Arduino's power supply.
+
+Okay. The materials are here as follows:
+
+1. Arduino/Genuino/Geekcreit/Whatever Uno
+
+2. Breadboard
+
+3. Jumper Wires
+
+4. Red, Yellow, and Green LED lights
+
+5. Arduino USB 2.0 Cable
+
+Alright. Let's begin, shall we??
+
+Step 1: Supply power to the breadboard
+
+Yes, I know that there's only one wire where there would usually be two, but trust me: Follow this exactly the way you see it. I've revised this post over and over, it's completely correct.
+
+Insert one side of the jumper wire into GND on the board. Lead the other side to the breadboard. Put it on the far right column on the breadboard, at the top. This is the ground column. ALL the way to the right. Take a look at the picture and/or the schematics if you don't understand.
+
+Step two: Adding the LEDs
+
+Take out your LEDs and resistors. Place one end of the resistor in the column on the right, the same column we connected our jumper wire to. Extend the other end of the breadboard into the main part of the breadboard. Attach the resistor to any row you like. Our LEDs will go on the same row. We will stick one end of the LED on one side of the breadboard, and the other end on the other side of the breadboard. The short end of the LED will go on the side your resistors are on, the right side. Extend the other end of the LED to the right side of the breadboard. (If you don't put the LEDs in correctly, the project will not work.)
+
+Step three: Completing the circuit
+
+Alright. This is the last part. Take another jumper wire, put it on the same row that you have an LED on. This is where the wires will go:
+
+Green LED: Port 2, Digital PWM section
+
+Yellow LED, Port 3, Digital PWM section
+
+Red LED, Port 4, Digital PWM section
+
+If you don't understand, check the schematics are refer to the pictures.
+
+Now, upload your code and you're finished!
+
+(See, what did I tell ya?? It works!!)
+
+CODE
+Arduino Traffic Light CodeArduino
+// variables
+int GREEN = 2;
+int YELLOW = 3;
+int RED = 4;
+int DELAY_GREEN = 5000;
+int DELAY_YELLOW = 2000;
+int DELAY_RED = 5000;
+
+
+// basic functions
+void setup()
+{
+  pinMode(GREEN, OUTPUT);
+  pinMode(YELLOW, OUTPUT);
+  pinMode(RED, OUTPUT);
+}
+
+void loop()
+{
+  green_light();
+  delay(DELAY_GREEN);
+  yellow_light();
+  delay(DELAY_YELLOW);
+  red_light();
+  delay(DELAY_RED);
+}
+
+void green_light()
+{
+  digitalWrite(GREEN, HIGH);
+  digitalWrite(YELLOW, LOW);
+  digitalWrite(RED, LOW);
+}
+
+void yellow_light()
+{
+  digitalWrite(GREEN, LOW);
+  digitalWrite(YELLOW, HIGH);
+  digitalWrite(RED, LOW);
+}
+
+void red_light()
+{
+  digitalWrite(GREEN, LOW);
+  digitalWrite(YELLOW, LOW);
+  digitalWrite(RED, HIGH);
+}
